@@ -1,0 +1,41 @@
+{
+  "name": "factory-equipment-management-app",
+  "version": "1.0.0",
+  "description": "工場設備管理アプリのプロトタイプ - 設備の稼働状況監視、メンテナンス管理、データ分析機能を提供",
+  "main": "src/main.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "vue": "^3.3.0",
+    "vue-router": "^4.2.0",
+    "axios": "^1.5.0",
+    "chart.js": "^4.4.0",
+    "vue-chartjs": "^5.2.0"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^5.0.8",
+    "@vue/compiler-sfc": "^3.3.0",
+    "eslint": "^8.50.0",
+    "eslint-plugin-vue": "^9.17.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "keywords": [
+    "factory",
+    "equipment",
+    "management",
+    "azure",
+    "iot",
+    "monitoring",
+    "maintenance"
+  ],
+  "author": "Factory Management Team",
+  "license": "MIT"
+}

@@ -1,0 +1,34 @@
+# Azure Functions プロジェクト設定
+azure-functions/host.json
+azure-functions/local.settings.json
+azure-functions/requirements.txt
+azure-functions/proxies.json
+
+# Python環境
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Azure 固有
+.azure/
+.azurefunctions/
+
+# 開発環境固有ファイル
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Functions固有の一時ファイル
+*.user
+*.suo
+*.cscfg
+*.Cloud
+*.pubxml
+*.publishproj

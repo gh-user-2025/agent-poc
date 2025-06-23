@@ -1,0 +1,13 @@
+# Azure Functions の依存関係
+azure-functions
+azure-functions-worker
+azure-identity
+azure-storage-blob
+azure-cosmos
+azure-sql
+pandas
+numpy
+scikit-learn
+matplotlib
+requests
+python-dotenv

@@ -118,6 +118,36 @@ factory-equipment-management/
 4. **フェーズ4**: メンテナンス管理機能の開発
 5. **フェーズ5**: データ分析・レポート機能の開発
 
+## クイックスタート
+
+### 開発環境の起動
+
+1. **バックエンドAPI起動**
+```bash
+cd backend
+python3 simple_api.py
+```
+
+2. **フロントエンド起動**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+3. **ブラウザアクセス**
+http://localhost:8080 でアプリケーションにアクセス
+
+### 主な機能
+
+- ✅ **設備監視ダッシュボード**: リアルタイム稼働状況表示
+- ✅ **アラート管理**: 異常検知と通知機能
+- ✅ **フィルタリング**: 場所・状態別の設備検索
+- ✅ **API連携**: フロントエンドとバックエンドの完全統合
+- ⚡ **Azure Functions**: IoTデータ処理とデータ変換
+
+詳細な開発手順は [development-setup-guide.md](docs/development-setup-guide.md) を参照してください。
+
 ## 貢献
 
 プロジェクトへの貢献を歓迎します。以下の手順に従ってください：

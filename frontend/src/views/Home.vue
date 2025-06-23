@@ -32,8 +32,8 @@
         <router-link to="/equipment-status" class="action-button primary">
           設備状況を確認
         </router-link>
-        <button class="action-button" @click="refreshData">
-          データを更新
+        <button class="action-button" @click="refreshData" :disabled="isLoading">
+          {{ isLoading ? '更新中...' : 'データを更新' }}
         </button>
         <button class="action-button" @click="showMaintenanceSchedule">
           メンテナンス予定
@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import ApiService from '@/services/apiService'
+
 export default {
   name: 'Home',
   data() {
@@ -66,12 +68,38 @@ export default {
         maintenance: 0,
         error: 0
       },
-      recentAlerts: []
+      recentAlerts: [],
+      isLoading: false,
+      useApiData: true // APIデータを使用するかどうかのフラグ
     }
   },
   methods: {
+    async loadDataFromApi() {
+      this.isLoading = true
+      try {
+        // 設備サマリーを取得
+        const summaryResponse = await ApiService.getEquipmentSummary()
+        this.equipmentSummary = summaryResponse.summary
+
+        // 最近のアラートを取得
+        const alertsResponse = await ApiService.getAlerts({ status: 'active', limit: 5 })
+        this.recentAlerts = alertsResponse.alerts.map(alert => ({
+          ...alert,
+          timestamp: new Date(alert.timestamp)
+        }))
+
+        console.log('APIからデータを取得しました')
+      } catch (error) {
+        console.error('APIからのデータ取得に失敗しました:', error)
+        // APIが利用できない場合はサンプルデータを使用
+        this.loadSampleData()
+        this.useApiData = false
+      } finally {
+        this.isLoading = false
+      }
+    },
     loadSampleData() {
-      // サンプルデータの読み込み
+      // サンプルデータの読み込み（フォールバック用）
       const sampleEquipment = [
         { id: 1, name: '射出成形機-1', status: 'running', location: 'ライン A' },
         { id: 2, name: '射出成形機-2', status: 'running', location: 'ライン A' },
@@ -107,9 +135,14 @@ export default {
         }
       ];
     },
-    refreshData() {
-      this.loadSampleData();
-      alert('データを更新しました');
+    async refreshData() {
+      if (this.useApiData) {
+        await this.loadDataFromApi()
+        alert('データを更新しました')
+      } else {
+        this.loadSampleData()
+        alert('サンプルデータを更新しました')
+      }
     },
     showMaintenanceSchedule() {
       alert('メンテナンス予定画面は準備中です');
@@ -118,8 +151,13 @@ export default {
       return timestamp.toLocaleString('ja-JP');
     }
   },
-  mounted() {
-    this.loadSampleData();
+  async mounted() {
+    // 初期データ読み込み
+    if (this.useApiData) {
+      await this.loadDataFromApi()
+    } else {
+      this.loadSampleData()
+    }
   }
 }
 </script>

@@ -1,0 +1,231 @@
+[
+  {
+    "id": "sensor-data-001",
+    "equipmentId": "1",
+    "sensorId": "1",
+    "sensorType": "temperature",
+    "measurementValue": 85.5,
+    "measurementUnit": "℃",
+    "status": "normal",
+    "timestamp": "2024-06-23T10:00:00Z",
+    "metadata": {
+      "equipmentName": "射出成形機-A001",
+      "location": "製造ライン A-1",
+      "sensorName": "射出成形機-A001-温度センサー1"
+    }
+  },
+  {
+    "id": "sensor-data-002",
+    "equipmentId": "1",
+    "sensorId": "2",
+    "sensorType": "pressure",
+    "measurementValue": 6.2,
+    "measurementUnit": "MPa",
+    "status": "normal",
+    "timestamp": "2024-06-23T10:00:00Z",
+    "metadata": {
+      "equipmentName": "射出成形機-A001",
+      "location": "製造ライン A-1",
+      "sensorName": "射出成形機-A001-圧力センサー1"
+    }
+  },
+  {
+    "id": "sensor-data-003",
+    "equipmentId": "1",
+    "sensorId": "3",
+    "sensorType": "vibration",
+    "measurementValue": 2.1,
+    "measurementUnit": "mm/s",
+    "status": "normal",
+    "timestamp": "2024-06-23T10:00:00Z",
+    "metadata": {
+      "equipmentName": "射出成形機-A001",
+      "location": "製造ライン A-1",
+      "sensorName": "射出成形機-A001-振動センサー1"
+    }
+  },
+  {
+    "id": "sensor-data-004",
+    "equipmentId": "1",
+    "sensorId": "4",
+    "sensorType": "current",
+    "measurementValue": 35.8,
+    "measurementUnit": "A",
+    "status": "normal",
+    "timestamp": "2024-06-23T10:00:00Z",
+    "metadata": {
+      "equipmentName": "射出成形機-A001",
+      "location": "製造ライン A-1",
+      "sensorName": "射出成形機-A001-電流センサー1"
+    }
+  },
+  {
+    "id": "sensor-data-005",
+    "equipmentId": "2",
+    "sensorId": "5",
+    "sensorType": "temperature",
+    "measurementValue": 92.3,
+    "measurementUnit": "℃",
+    "status": "normal",
+    "timestamp": "2024-06-23T10:00:00Z",
+    "metadata": {
+      "equipmentName": "射出成形機-A002",
+      "location": "製造ライン A-2",
+      "sensorName": "射出成形機-A002-温度センサー1"
+    }
+  },
+  {
+    "id": "sensor-data-006",
+    "equipmentId": "6",
+    "sensorId": "9",
+    "sensorType": "temperature",
+    "measurementValue": 45.2,
+    "measurementUnit": "℃",
+    "status": "normal",
+    "timestamp": "2024-06-23T10:00:00Z",
+    "metadata": {
+      "equipmentName": "組立ロボット-B001",
+      "location": "製造ライン B-1",
+      "sensorName": "組立ロボット-B001-温度センサー1"
+    }
+  },
+  {
+    "id": "sensor-data-007",
+    "equipmentId": "6",
+    "sensorId": "10",
+    "sensorType": "vibration",
+    "measurementValue": 1.8,
+    "measurementUnit": "mm/s",
+    "status": "normal",
+    "timestamp": "2024-06-23T10:00:00Z",
+    "metadata": {
+      "equipmentName": "組立ロボット-B001",
+      "location": "製造ライン B-1",
+      "sensorName": "組立ロボット-B001-振動センサー1"
+    }
+  },
+  {
+    "id": "sensor-data-008",
+    "equipmentId": "9",
+    "sensorId": "15",
+    "sensorType": "temperature",
+    "measurementValue": 24.5,
+    "measurementUnit": "℃",
+    "status": "normal",
+    "timestamp": "2024-06-23T10:00:00Z",
+    "metadata": {
+      "equipmentName": "検査装置-C001",
+      "location": "製造ライン C-1",
+      "sensorName": "検査装置-C001-温度センサー1"
+    }
+  },
+  {
+    "id": "sensor-data-009",
+    "equipmentId": "9",
+    "sensorId": "16",
+    "sensorType": "humidity",
+    "measurementValue": 55.2,
+    "measurementUnit": "%RH",
+    "status": "normal",
+    "timestamp": "2024-06-23T10:00:00Z",
+    "metadata": {
+      "equipmentName": "検査装置-C001",
+      "location": "製造ライン C-1",
+      "sensorName": "検査装置-C001-湿度センサー1"
+    }
+  },
+  {
+    "id": "sensor-data-010",
+    "equipmentId": "11",
+    "sensorId": "18",
+    "sensorType": "temperature",
+    "measurementValue": 78.9,
+    "measurementUnit": "℃",
+    "status": "warning",
+    "timestamp": "2024-06-23T10:00:00Z",
+    "metadata": {
+      "equipmentName": "コンプレッサー-1",
+      "location": "共通設備室-1",
+      "sensorName": "コンプレッサー-1-温度センサー1",
+      "warningReason": "温度が警告閾値を超過"
+    }
+  },
+  {
+    "id": "sensor-data-011",
+    "equipmentId": "11",
+    "sensorId": "19",
+    "sensorType": "pressure",
+    "measurementValue": 0.85,
+    "measurementUnit": "MPa",
+    "status": "normal",
+    "timestamp": "2024-06-23T10:00:00Z",
+    "metadata": {
+      "equipmentName": "コンプレッサー-1",
+      "location": "共通設備室-1",
+      "sensorName": "コンプレッサー-1-圧力センサー1"
+    }
+  },
+  {
+    "id": "sensor-data-012",
+    "equipmentId": "11",
+    "sensorId": "20",
+    "sensorType": "vibration",
+    "measurementValue": 12.5,
+    "measurementUnit": "mm/s",
+    "status": "warning",
+    "timestamp": "2024-06-23T10:00:00Z",
+    "metadata": {
+      "equipmentName": "コンプレッサー-1",
+      "location": "共通設備室-1",
+      "sensorName": "コンプレッサー-1-振動センサー1",
+      "warningReason": "振動値が通常値より高い"
+    }
+  },
+  {
+    "id": "sensor-data-013",
+    "equipmentId": "1",
+    "sensorId": "1",
+    "sensorType": "temperature",
+    "measurementValue": 210.5,
+    "measurementUnit": "℃",
+    "status": "critical",
+    "timestamp": "2024-06-23T10:05:00Z",
+    "metadata": {
+      "equipmentName": "射出成形機-A001",
+      "location": "製造ライン A-1",
+      "sensorName": "射出成形機-A001-温度センサー1",
+      "alertGenerated": true,
+      "criticalReason": "温度が危険閾値を超過"
+    }
+  },
+  {
+    "id": "sensor-data-014",
+    "equipmentId": "2",
+    "sensorId": "6",
+    "sensorType": "pressure",
+    "measurementValue": 5.8,
+    "measurementUnit": "MPa",
+    "status": "normal",
+    "timestamp": "2024-06-23T10:05:00Z",
+    "metadata": {
+      "equipmentName": "射出成形機-A002",
+      "location": "製造ライン A-2",
+      "sensorName": "射出成形機-A002-圧力センサー1"
+    }
+  },
+  {
+    "id": "sensor-data-015",
+    "equipmentId": "7",
+    "sensorId": "12",
+    "sensorType": "temperature",
+    "measurementValue": 52.1,
+    "measurementUnit": "℃",
+    "status": "normal",
+    "timestamp": "2024-06-23T10:05:00Z",
+    "metadata": {
+      "equipmentName": "組立ロボット-B002",
+      "location": "製造ライン B-2",
+      "sensorName": "組立ロボット-B002-温度センサー1"
+    }
+  }
+]

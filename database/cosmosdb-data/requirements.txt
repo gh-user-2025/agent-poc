@@ -1,0 +1,2 @@
+# Azure Cosmos DB サンプルデータ投入スクリプト用依存関係
+azure-cosmos>=4.5.0

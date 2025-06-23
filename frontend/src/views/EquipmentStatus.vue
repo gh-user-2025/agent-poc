@@ -23,8 +23,8 @@
           <option value="error">エラー</option>
         </select>
       </div>
-      <button class="refresh-btn" @click="refreshData">
-        🔄 更新
+      <button class="refresh-btn" @click="refreshData" :disabled="isLoading">
+        🔄 {{ isLoading ? '更新中...' : '更新' }}
       </button>
     </div>
 
@@ -131,6 +131,8 @@
 </template>
 
 <script>
+import ApiService from '@/services/apiService'
+
 export default {
   name: 'EquipmentStatus',
   data() {
@@ -139,12 +141,32 @@ export default {
       filteredEquipment: [],
       selectedLocation: '',
       selectedStatus: '',
-      selectedEquipmentDetail: null
+      selectedEquipmentDetail: null,
+      isLoading: false,
+      useApiData: true // APIデータを使用するかどうかのフラグ
     }
   },
   methods: {
+    async loadDataFromApi() {
+      this.isLoading = true
+      try {
+        // 設備一覧を取得
+        const response = await ApiService.getEquipment()
+        this.allEquipment = response.equipment
+        this.filteredEquipment = [...this.allEquipment]
+        
+        console.log('APIから設備データを取得しました')
+      } catch (error) {
+        console.error('APIからの設備データ取得に失敗しました:', error)
+        // APIが利用できない場合はサンプルデータを使用
+        this.loadSampleData()
+        this.useApiData = false
+      } finally {
+        this.isLoading = false
+      }
+    },
     loadSampleData() {
-      // サンプル設備データ
+      // サンプル設備データ（フォールバック用）
       this.allEquipment = [
         {
           id: 1,
@@ -262,7 +284,27 @@ export default {
       
       this.filteredEquipment = [...this.allEquipment];
     },
-    filterEquipment() {
+    async filterEquipment() {
+      if (this.useApiData) {
+        // APIでフィルタリング
+        try {
+          const filters = {}
+          if (this.selectedLocation) filters.location = this.selectedLocation
+          if (this.selectedStatus) filters.status = this.selectedStatus
+          
+          const response = await ApiService.getEquipment(filters)
+          this.filteredEquipment = response.equipment
+        } catch (error) {
+          console.error('フィルタリング中にエラーが発生しました:', error)
+          // ローカルフィルタリングにフォールバック
+          this.localFilterEquipment()
+        }
+      } else {
+        // ローカルフィルタリング
+        this.localFilterEquipment()
+      }
+    },
+    localFilterEquipment() {
       this.filteredEquipment = this.allEquipment.filter(equipment => {
         const locationMatch = !this.selectedLocation || equipment.location === this.selectedLocation;
         const statusMatch = !this.selectedStatus || equipment.status === this.selectedStatus;
@@ -278,20 +320,46 @@ export default {
       };
       return statusMap[status] || '不明';
     },
-    selectEquipment(equipment) {
-      this.selectedEquipmentDetail = equipment;
+    async selectEquipment(equipment) {
+      if (this.useApiData) {
+        try {
+          // APIから最新の詳細情報を取得
+          const response = await ApiService.getEquipmentDetail(equipment.id)
+          this.selectedEquipmentDetail = response.equipment
+        } catch (error) {
+          console.error('設備詳細取得に失敗しました:', error)
+          // フォールバックとして渡された設備情報を使用
+          this.selectedEquipmentDetail = equipment
+        }
+      } else {
+        this.selectedEquipmentDetail = equipment
+      }
     },
     closeModal() {
       this.selectedEquipmentDetail = null;
     },
-    refreshData() {
-      this.loadSampleData();
-      // 実際の環境では、APIからデータを取得
-      console.log('設備データを更新しました');
+    async refreshData() {
+      if (this.useApiData) {
+        await this.loadDataFromApi()
+        // フィルターが設定されている場合は再適用
+        if (this.selectedLocation || this.selectedStatus) {
+          await this.filterEquipment()
+        }
+        console.log('設備データを更新しました')
+      } else {
+        this.loadSampleData()
+        this.filterEquipment()
+        console.log('サンプルデータを更新しました')
+      }
     }
   },
-  mounted() {
-    this.loadSampleData();
+  async mounted() {
+    // 初期データ読み込み
+    if (this.useApiData) {
+      await this.loadDataFromApi()
+    } else {
+      this.loadSampleData()
+    }
   }
 }
 </script>
